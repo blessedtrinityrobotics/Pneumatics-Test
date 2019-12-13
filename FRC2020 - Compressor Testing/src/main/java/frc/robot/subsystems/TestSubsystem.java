@@ -8,6 +8,7 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import frc.robot.Robot;
 import frc.robot.RobotMap;
@@ -22,6 +23,7 @@ public class TestSubsystem extends Subsystem {
 
   private DoubleSolenoid testSolenoid =  new DoubleSolenoid(RobotMap.solenoidChlTwo,RobotMap.solenoidChlOne );
 
+  private Compressor cp26Compressor = new Compressor();
 
   public TestSubsystem(){
     testSolenoid.clearAllPCMStickyFaults();
@@ -39,5 +41,9 @@ public class TestSubsystem extends Subsystem {
 
   public void closeTest(){
     testSolenoid.set(DoubleSolenoid.Value.kForward);
+  }
+
+  public double current(){
+    return cp26Compressor.getCompressorCurrent();
   }
 }
